@@ -28,7 +28,6 @@ services:
         - Error
         - LogicException
         - InvalidArgumentException
-        - Symfony\Component\Console\Command\Command
     tags:
       - phpstan.rules.rule
 
