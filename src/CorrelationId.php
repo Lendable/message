@@ -8,7 +8,7 @@ use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface;
 
 /**
- * An identifier that crosses multiple commands/events.
+ * An identifier that crosses multiple messages.
  *
  * This is generated at the initiation point of a flow
  * and carried through to all subsequent messages to
