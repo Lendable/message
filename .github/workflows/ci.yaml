@@ -62,6 +62,10 @@ jobs:
       - name: "Ensure application writable for non-root user"
         run: "chown -R 1000:1000 ."
 
+      - name: "Update composer platform version"
+        if: ${{ matrix.dependencies != 'locked' && matrix.php-version != '8.1' }}
+        run: "su-exec 1000 composer config platform.php ${{ matrix.php-version }}"
+
       - name: "Install composer dependencies"
         uses: "ramsey/composer-install@v2"
         with:
