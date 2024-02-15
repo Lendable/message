@@ -1,0 +1,93 @@
+name: "CI"
+
+concurrency:
+  group: "ci-${{ github.head_ref || github.run_id }}"
+  cancel-in-progress: true
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    name: "Execute (PHP ${{ matrix.php-version }} with ${{ matrix.dependencies }} deps)"
+    runs-on: "ubuntu-22.04"
+    container:
+      image: "${{ matrix.php-image }}"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        dependencies:
+          - "lowest"
+          - "locked"
+          - "highest"
+        php-version:
+          - "8.1"
+          - "8.2"
+          - "8.3"
+        include:
+          - php-version: "8.1"
+            php-image: "public.ecr.aws/docker/library/php:8.1-cli-alpine"
+          - php-version: "8.2"
+            php-image: "public.ecr.aws/docker/library/php:8.2-cli-alpine"
+          - php-version: "8.3"
+            php-image: "public.ecr.aws/docker/library/php:8.3-cli-alpine"
+
+    steps:
+      - name: "Install OS dependencies"
+        run: apk add --no-cache bash git su-exec
+
+      - name: "Install composer"
+        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.7.1
+
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: "Cache Static Analysis Cache Files"
+        uses: actions/cache@v3
+        if: ${{ matrix.dependencies == 'locked' }}
+        with:
+          path: ./var/tmp
+          key: ${{ runner.OS }}-${{ matrix.php-version }}-static-analysis-${{ hashFiles('**/composer.lock') }}-${{ github.run_id }}-${{ github.run_number }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ matrix.php-version }}-static-analysis-${{ hashFiles('**/composer.lock') }}-${{ github.run_id }}
+            ${{ runner.OS }}-${{ matrix.php-version }}-static-analysis-${{ hashFiles('**/composer.lock') }}-
+            ${{ runner.OS }}-${{ matrix.php-version }}-static-analysis-
+
+      - name: "Ensure application writable for non-root user"
+        run: "chown -R 1000:1000 ."
+
+      - name: "Update composer platform version"
+        if: ${{ matrix.dependencies != 'locked' && matrix.php-version != '8.1' }}
+        run: "su-exec 1000 composer config platform.php ${{ matrix.php-version }}"
+
+      - name: "Install composer dependencies"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+
+      - name: "Validate Composer dependencies"
+        run: "su-exec 1000 composer validate"
+
+      - name: "Check Composer licenses"
+        run: "su-exec 1000 composer licenses:check"
+
+      - name: "Run coding style"
+        if: ${{ matrix.dependencies == 'locked' && matrix.php-version == '8.1' }}
+        run: "su-exec 1000 composer code-style:check"
+
+      - name: "Run PHPStan"
+        if: ${{ matrix.dependencies == 'locked' }}
+        run: "su-exec 1000 composer phpstan"
+
+      - name: "Run Rector"
+        if: ${{ matrix.dependencies == 'locked' }}
+        run: "su-exec 1000 composer rector:check"
+
+      - name: "Unit tests"
+        run: "su-exec 1000 composer tests:unit"
