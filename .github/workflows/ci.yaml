@@ -49,7 +49,7 @@ jobs:
           show-progress: false
 
       - name: "Cache Static Analysis Cache Files"
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         if: ${{ matrix.dependencies == 'locked' }}
         with:
           path: ./var/tmp
