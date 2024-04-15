@@ -7,7 +7,7 @@ namespace Lendable\Message\Metadata;
 use Lendable\Message\Message;
 
 /**
- * Enriches metadata by utilising multiple other enrichers.
+ * Enriches metadata by utilizing multiple other enrichers.
  */
 final class ChainEnricher implements MetadataEnricher
 {
