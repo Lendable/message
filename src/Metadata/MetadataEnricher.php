@@ -7,7 +7,7 @@ namespace Lendable\Message\Metadata;
 use Lendable\Message\Message;
 
 /**
- * Metadata enrichers add new key/value pairs into an existing {@see Metadata}, providing a new instance of the
+ * Metadata enrichers add new key-value pairs into an existing {@see Metadata}, providing a new instance of the
  * metadata.
  */
 interface MetadataEnricher
