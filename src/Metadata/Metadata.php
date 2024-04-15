@@ -121,13 +121,19 @@ final class Metadata implements \Countable, \IteratorAggregate
         );
     }
 
+    /**
+     * @throws \InvalidArgumentException If the metadata key is mandatory.
+     */
     public function without(string $key): self
     {
-        $metadata = $this->flatten();
+        if (MetadataKey::tryFrom($key) instanceof MetadataKey) {
+            throw new \InvalidArgumentException(\sprintf('Metadata "%s" is mandatory.', $key));
+        }
 
+        $metadata = $this->additionalMetadata;
         unset($metadata[$key]);
 
-        return self::fromArray($metadata);
+        return new self($this->messageName, $this->causationId, $this->correlationId, $metadata);
     }
 
     public function getIterator(): \Traversable

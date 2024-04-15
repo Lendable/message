@@ -291,7 +291,7 @@ final class MetadataTest extends TestCase
             CorrelationId::fromString('9a040030-5a71-4a07-a469-4c005b47c686'),
         );
 
-        $this->expectExceptionObject(new \InvalidArgumentException(\sprintf('Metadata "%s" is missing.', $key->value)));
+        $this->expectExceptionObject(new \InvalidArgumentException(\sprintf('Metadata "%s" is mandatory.', $key->value)));
         $metadata->without($key->value);
     }
 
