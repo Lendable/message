@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Lendable\Message;
 
 use Lendable\Message\CorrelationId;
+use Lendable\Message\InvalidUuidString;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,6 +41,22 @@ final class CorrelationIdTest extends TestCase
 
         self::assertSame(UuidGenerator::stringFromBinaryString($string), $instance->toString());
         self::assertSame($string, $instance->toBinary());
+    }
+
+    #[Test]
+    public function it_throws_when_constructed_from_invalid_hex_string(): void
+    {
+        $this->expectExceptionObject(InvalidUuidString::hexString('foo'));
+
+        CorrelationId::fromString('foo');
+    }
+
+    #[Test]
+    public function it_throws_when_constructed_from_invalid_binary_string(): void
+    {
+        $this->expectExceptionObject(InvalidUuidString::binaryString('foo'));
+
+        CorrelationId::fromBinaryString('foo');
     }
 
     #[Test]
