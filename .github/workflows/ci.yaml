@@ -39,7 +39,7 @@ jobs:
         run: apk add --no-cache bash git su-exec
 
       - name: "Install composer"
-        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.7.3
+        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.7.4
 
       - name: "Checkout"
         uses: actions/checkout@v4
