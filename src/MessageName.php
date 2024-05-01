@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Lendable\Message;
 
-final class MessageName
+final readonly class MessageName
 {
     /**
      * @var non-empty-string
      */
-    private readonly string $name;
+    private string $name;
 
     /**
      * @throws InvalidMessageName If the message name is empty.

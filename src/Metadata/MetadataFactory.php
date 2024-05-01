@@ -17,14 +17,14 @@ use Lendable\Message\MessageName;
  *
  * @template T of Message
  */
-final class MetadataFactory
+final readonly class MetadataFactory
 {
     /**
      * @param \Closure(T): MessageName $messageNameFactory
      */
     private function __construct(
-        private readonly \Closure $messageNameFactory,
-        private readonly MetadataEnricher $enricher,
+        private \Closure $messageNameFactory,
+        private MetadataEnricher $enricher,
     ) {}
 
     /**

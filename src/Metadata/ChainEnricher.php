@@ -9,12 +9,12 @@ use Lendable\Message\Message;
 /**
  * Enriches metadata by utilizing multiple other enrichers.
  */
-final class ChainEnricher implements MetadataEnricher
+final readonly class ChainEnricher implements MetadataEnricher
 {
     /**
      * @var iterable<MetadataEnricher>
      */
-    private readonly iterable $enrichers;
+    private iterable $enrichers;
 
     public function __construct(MetadataEnricher ...$enrichers)
     {
