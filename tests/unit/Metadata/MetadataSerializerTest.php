@@ -11,10 +11,12 @@ use Lendable\Message\Metadata\Metadata;
 use Lendable\Message\Metadata\MetadataKey;
 use Lendable\Message\Metadata\MetadataSerializer;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(MetadataSerializer::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class MetadataSerializerTest extends TestCase
 {
     #[Test]

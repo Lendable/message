@@ -7,10 +7,12 @@ namespace Tests\Unit\Lendable\Message;
 use Lendable\Message\MessageId;
 use Lendable\Message\StringUuidConverter;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(StringUuidConverter::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class StringUuidConverterTest extends TestCase
 {
     #[Test]

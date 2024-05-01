@@ -6,10 +6,12 @@ namespace Tests\Unit\Lendable\Message;
 
 use Lendable\Message\InvalidUuidString;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(InvalidUuidString::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class InvalidUuidStringTest extends TestCase
 {
     #[Test]

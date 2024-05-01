@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Lendable\PHPUnitExtensions\Rector\EnforceDisableReturnValueGenerationForTestDoublesRector;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\CodeQuality\Rector\Array_\CallableThisArrayToAnonymousFunctionRector;
 use Rector\CodeQuality\Rector\ClassMethod\LocallyCalledStaticMethodToNonStaticRector;
@@ -28,4 +29,6 @@ return static function (RectorConfig $rectorConfig): void {
         LevelSetList::UP_TO_PHP_82,
         PHPUnitSetList::PHPUNIT_100,
     ]);
+
+    $rectorConfig->rule(EnforceDisableReturnValueGenerationForTestDoublesRector::class);
 };

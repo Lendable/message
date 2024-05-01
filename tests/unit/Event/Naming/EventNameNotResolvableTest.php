@@ -8,11 +8,13 @@ use Lendable\Message\CorrelationId;
 use Lendable\Message\Event\Event;
 use Lendable\Message\Event\Naming\EventNameNotResolvable;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Event\ExampleFooEvent;
 
 #[CoversClass(EventNameNotResolvable::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class EventNameNotResolvableTest extends TestCase
 {
     #[Test]
