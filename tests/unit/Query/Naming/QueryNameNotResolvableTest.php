@@ -8,11 +8,13 @@ use Lendable\Message\CorrelationId;
 use Lendable\Message\Query\Naming\QueryNameNotResolvable;
 use Lendable\Message\Query\Query;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Query\ExampleFooQuery;
 
 #[CoversClass(QueryNameNotResolvable::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class QueryNameNotResolvableTest extends TestCase
 {
     #[Test]

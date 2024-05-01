@@ -7,11 +7,13 @@ namespace Tests\Unit\Lendable\Message;
 use Lendable\Message\BinaryStringUuidConverter;
 use Lendable\Message\MessageId;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\UuidGenerator;
 
 #[CoversClass(BinaryStringUuidConverter::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class BinaryStringUuidConverterTest extends TestCase
 {
     #[Test]

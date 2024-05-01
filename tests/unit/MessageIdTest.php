@@ -7,12 +7,14 @@ namespace Tests\Unit\Lendable\Message;
 use Lendable\Message\InvalidUuidString;
 use Lendable\Message\MessageId;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Tests\Fixtures\Lendable\Message\UuidGenerator;
 
 #[CoversClass(MessageId::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class MessageIdTest extends TestCase
 {
     #[Test]

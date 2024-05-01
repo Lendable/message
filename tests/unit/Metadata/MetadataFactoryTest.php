@@ -8,6 +8,7 @@ use Lendable\Message\CorrelationId;
 use Lendable\Message\Metadata\MetadataFactory;
 use Lendable\Message\Metadata\MetadataKey;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Command\ExampleFooCommand;
@@ -15,6 +16,7 @@ use Tests\Fixtures\Lendable\Message\Command\Naming\ExampleCommandNameResolver;
 use Tests\Fixtures\Lendable\Message\Metadata\StaticMetadataEnricher;
 
 #[CoversClass(MetadataFactory::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class MetadataFactoryTest extends TestCase
 {
     #[Test]

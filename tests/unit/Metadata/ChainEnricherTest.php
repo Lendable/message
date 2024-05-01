@@ -13,12 +13,14 @@ use Lendable\Message\Metadata\Metadata;
 use Lendable\Message\Metadata\MetadataEnricher;
 use Lendable\Message\Metadata\MetadataKey;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Event\ExampleFooEvent;
 use Tests\Fixtures\Lendable\Message\Metadata\StaticMetadataEnricher;
 
 #[CoversClass(ChainEnricher::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class ChainEnricherTest extends TestCase
 {
     #[Test]

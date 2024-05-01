@@ -11,10 +11,12 @@ use Lendable\Message\Metadata\Metadata;
 use Lendable\Message\Metadata\MetadataKey;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(Metadata::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class MetadataTest extends TestCase
 {
     #[Test]

@@ -9,10 +9,12 @@ use Lendable\Message\Message;
 use Lendable\Message\MessageId;
 use Lendable\Message\MessageTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(MessageTrait::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class MessageTraitTest extends TestCase
 {
     #[Test]
