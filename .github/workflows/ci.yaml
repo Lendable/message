@@ -23,12 +23,9 @@ jobs:
           - "locked"
           - "highest"
         php-version:
-          - "8.1"
           - "8.2"
           - "8.3"
         include:
-          - php-version: "8.1"
-            php-image: "public.ecr.aws/docker/library/php:8.1-cli-alpine"
           - php-version: "8.2"
             php-image: "public.ecr.aws/docker/library/php:8.2-cli-alpine"
           - php-version: "8.3"
@@ -61,7 +58,7 @@ jobs:
         run: "chown -R 1000:1000 ."
 
       - name: "Update composer platform version"
-        if: ${{ matrix.dependencies != 'locked' && matrix.php-version != '8.1' }}
+        if: ${{ matrix.dependencies != 'locked' && matrix.php-version != '8.2' }}
         run: "su-exec 1000 composer config platform.php ${{ matrix.php-version }}"
 
       - name: "Install composer dependencies"
@@ -76,7 +73,7 @@ jobs:
         run: "su-exec 1000 composer licenses:check"
 
       - name: "Run coding style"
-        if: ${{ matrix.dependencies == 'locked' && matrix.php-version == '8.1' }}
+        if: ${{ matrix.dependencies == 'locked' && matrix.php-version == '8.2' }}
         run: "su-exec 1000 composer code-style:check"
 
       - name: "Run PHPStan"

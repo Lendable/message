@@ -9,9 +9,9 @@ use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface as RamseyUuidInterface;
 
-final class MessageId implements Uuid
+final readonly class MessageId implements Uuid
 {
-    private function __construct(private readonly RamseyUuidInterface $uuid) {}
+    private function __construct(private RamseyUuidInterface $uuid) {}
 
     public static function fromString(string $value): static
     {

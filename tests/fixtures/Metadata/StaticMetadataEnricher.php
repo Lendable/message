@@ -8,12 +8,12 @@ use Lendable\Message\Message;
 use Lendable\Message\Metadata\Metadata;
 use Lendable\Message\Metadata\MetadataEnricher;
 
-final class StaticMetadataEnricher implements MetadataEnricher
+final readonly class StaticMetadataEnricher implements MetadataEnricher
 {
     /**
      * @param array<string, scalar> $metadata
      */
-    public function __construct(private readonly array $metadata) {}
+    public function __construct(private array $metadata) {}
 
     public function enrich(Message $message, Metadata $metadata): Metadata
     {

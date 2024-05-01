@@ -15,20 +15,20 @@ use Lendable\Message\MessageName;
  *
  * @template-implements \IteratorAggregate<string, scalar>
  */
-final class Metadata implements \Countable, \IteratorAggregate
+final readonly class Metadata implements \Countable, \IteratorAggregate
 {
     /**
      * @var array<string, scalar>
      */
-    private readonly array $additionalMetadata;
+    private array $additionalMetadata;
 
     /**
      * @param array<string, scalar> $metadata
      */
     private function __construct(
-        public readonly MessageName $messageName,
-        public readonly MessageId $causationId,
-        public readonly CorrelationId $correlationId,
+        public MessageName $messageName,
+        public MessageId $causationId,
+        public CorrelationId $correlationId,
         array $metadata,
     ) {
         unset(

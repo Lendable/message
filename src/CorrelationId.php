@@ -16,9 +16,9 @@ use Ramsey\Uuid\UuidInterface;
  * and carried through to all subsequent messages to
  * enable tracking of the flow.
  */
-final class CorrelationId implements Uuid
+final readonly class CorrelationId implements Uuid
 {
-    private function __construct(private readonly UuidInterface $uuid) {}
+    private function __construct(private UuidInterface $uuid) {}
 
     public static function generate(): self
     {
