@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(['src', 'tests']);
+    ->in([__DIR__])
+    ->exclude(['tmp']);
 
 return (new PhpCsFixer\Config())
     ->setRules([
