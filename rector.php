@@ -4,13 +4,7 @@ declare(strict_types=1);
 
 use Lendable\PHPUnitExtensions\Rector\EnforceDisableReturnValueGenerationForTestDoublesRector;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
-use Rector\CodeQuality\Rector\Array_\CallableThisArrayToAnonymousFunctionRector;
-use Rector\CodeQuality\Rector\ClassMethod\LocallyCalledStaticMethodToNonStaticRector;
-use Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector;
 use Rector\Config\RectorConfig;
-use Rector\Php71\Rector\FuncCall\RemoveExtraParametersRector;
-use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
-use Rector\Php81\Rector\Array_\FirstClassCallableRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
