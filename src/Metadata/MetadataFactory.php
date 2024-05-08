@@ -9,7 +9,6 @@ use Lendable\Message\Command\Naming\CommandNameResolver;
 use Lendable\Message\Event\Event;
 use Lendable\Message\Event\Naming\EventNameResolver;
 use Lendable\Message\Message;
-use Lendable\Message\MessageId;
 use Lendable\Message\MessageName;
 
 /**
@@ -36,7 +35,7 @@ final readonly class MetadataFactory
             $message,
             Metadata::base(
                 ($this->messageNameFactory)($message),
-                MessageId::fromString($message->causationId()->toString()),
+                $message->causationId(),
                 $message->correlationId(),
             ),
         );
