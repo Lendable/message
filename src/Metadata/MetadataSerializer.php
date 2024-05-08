@@ -7,31 +7,39 @@ namespace Lendable\Message\Metadata;
 final class MetadataSerializer
 {
     /**
-     * @throws \JsonException
+     * @throws MetadataNotSerializable
      */
     public function serialize(Metadata $metadata): string
     {
-        return \json_encode(
-            $metadata->all(),
-            \JSON_FORCE_OBJECT |
-            \JSON_HEX_TAG |
-            \JSON_HEX_APOS |
-            \JSON_HEX_AMP |
-            \JSON_HEX_QUOT |
-            \JSON_UNESCAPED_UNICODE |
-            \JSON_PRESERVE_ZERO_FRACTION |
-            \JSON_THROW_ON_ERROR,
-        );
+        try {
+            return \json_encode(
+                $metadata->all(),
+                \JSON_FORCE_OBJECT |
+                \JSON_HEX_TAG |
+                \JSON_HEX_APOS |
+                \JSON_HEX_AMP |
+                \JSON_HEX_QUOT |
+                \JSON_UNESCAPED_UNICODE |
+                \JSON_PRESERVE_ZERO_FRACTION |
+                \JSON_THROW_ON_ERROR,
+            );
+        } catch (\JsonException $exception) {
+            throw MetadataNotSerializable::dueTo($exception);
+        }
     }
 
     /**
-     * @throws \JsonException
+     * @throws MetadataNotDeserializable
      */
     public function deserialize(string $serializedMetadata): Metadata
     {
-        /** @var array<string, scalar> $metadata */
-        $metadata = \json_decode($serializedMetadata, true, flags: \JSON_THROW_ON_ERROR);
+        try {
+            /** @var array<string, scalar> $metadata */
+            $metadata = \json_decode($serializedMetadata, true, flags: \JSON_THROW_ON_ERROR);
 
-        return Metadata::fromArray($metadata);
+            return Metadata::fromArray($metadata);
+        } catch (\Exception $exception) {
+            throw MetadataNotDeserializable::dueTo($exception);
+        }
     }
 }
