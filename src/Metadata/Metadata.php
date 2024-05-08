@@ -143,6 +143,9 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
 
     /**
      * @param array<string, scalar> $metadata
+     *
+     * @throws \InvalidArgumentException If the key is missing.
+     * @throws \InvalidArgumentException If the metadata value is not a string.
      */
     private static function extractValue(array $metadata, MetadataKey $key): string
     {
