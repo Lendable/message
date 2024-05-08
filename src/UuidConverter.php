@@ -12,6 +12,8 @@ interface UuidConverter
      * @param class-string<T> $target
      *
      * @return T
+     *
+     * @throws InvalidUuidString
      */
     public function convert(string $value, string $target): Uuid;
 }
