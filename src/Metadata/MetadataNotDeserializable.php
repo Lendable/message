@@ -13,6 +13,6 @@ final class MetadataNotDeserializable extends \InvalidArgumentException
 
     public static function dueTo(\Throwable $cause): self
     {
-        return new self('Metadata was not deseriazable.', $cause);
+        return new self('Metadata was not deserializable.', $cause);
     }
 }
