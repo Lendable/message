@@ -96,9 +96,12 @@ final class MetadataSerializerTest extends TestCase
     #[Test]
     public function deserializing_throws_if_contains_invalid_data(): void
     {
-        $this->expectExceptionObject(MetadataNotDeserializable::dueTo(new \InvalidArgumentException()));
-
-        (new MetadataSerializer())->deserialize('{"invalid: "json"}');
+        try {
+            (new MetadataSerializer())->deserialize('{"invalid: "json"}');
+            self::fail('Exception not thrown.');
+        } catch (MetadataNotDeserializable $exception) {
+            self::assertInstanceOf(\JsonException::class, $exception->getPrevious());
+        }
     }
 
     #[Test]
