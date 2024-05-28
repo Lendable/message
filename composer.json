@@ -64,7 +64,7 @@
             "composer-license-checker"
         ],
         "phpstan": [
-            "phpstan analyse --memory-limit=-1 src/ tests/ rector.php --ansi --no-progress"
+            "phpstan analyse --memory-limit=-1 src/ tests/ rector.php --ansi --no-progress -v"
         ],
         "phpunit:unit": [
             "phpunit --colors=always --testsuite=unit"
