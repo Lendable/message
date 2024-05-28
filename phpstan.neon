@@ -37,3 +37,4 @@ parameters:
   tmpDir: tmp/phpstan
 
   checkMissingIterableValueType: true
+  treatPhpDocTypesAsCertain: false
