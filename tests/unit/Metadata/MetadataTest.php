@@ -329,4 +329,54 @@ final class MetadataTest extends TestCase
             $foundMetadata,
         );
     }
+
+    #[Test]
+    public function throws_when_creating_from_array_with_non_string_keys(): void
+    {
+        $this->expectExceptionObject(new \InvalidArgumentException('Invalid key "123", must be a string.'));
+
+        Metadata::fromArray([ // @phpstan-ignore argument.type
+            MetadataKey::MESSAGE_NAME->value => MessageName::fromString('foo')->toString(),
+            MetadataKey::CAUSATION_ID->value => MessageId::fromString('ccc32a5b-3fb9-40a8-b366-5d863f536035')->toString(),
+            MetadataKey::CORRELATION_ID->value => CorrelationId::fromString('9a040030-5a71-4a07-a469-4c005b47c686')->toString(),
+            123 => 456,
+        ]);
+    }
+
+    #[Test]
+    public function throws_when_creating_from_array_with_non_scalar_values(): void
+    {
+        $this->expectExceptionObject(new \InvalidArgumentException('Invalid value for key "foo", must be a scalar, got a "array".'));
+
+        Metadata::fromArray([ // @phpstan-ignore argument.type
+            MetadataKey::MESSAGE_NAME->value => MessageName::fromString('foo')->toString(),
+            MetadataKey::CAUSATION_ID->value => MessageId::fromString('ccc32a5b-3fb9-40a8-b366-5d863f536035')->toString(),
+            MetadataKey::CORRELATION_ID->value => CorrelationId::fromString('9a040030-5a71-4a07-a469-4c005b47c686')->toString(),
+            'foo' => [1, 2, 3],
+        ]);
+    }
+
+    #[Test]
+    public function throws_when_adding_multiple_new_values_with_non_string_key(): void
+    {
+        $this->expectExceptionObject(new \InvalidArgumentException('Invalid key "123", must be a string.'));
+
+        Metadata::base(
+            MessageName::fromString('foo'),
+            MessageId::fromString('ccc32a5b-3fb9-40a8-b366-5d863f536035'),
+            CorrelationId::fromString('9a040030-5a71-4a07-a469-4c005b47c686'),
+        )->withMultiple(['foo' => 'bar', 123 => 'baz']); // @phpstan-ignore argument.type
+    }
+
+    #[Test]
+    public function throws_when_adding_multiple_new_values_when_non_scalar_value(): void
+    {
+        $this->expectExceptionObject(new \InvalidArgumentException('Invalid value for key "bar", must be a scalar, got a "array".'));
+
+        Metadata::base(
+            MessageName::fromString('foo'),
+            MessageId::fromString('ccc32a5b-3fb9-40a8-b366-5d863f536035'),
+            CorrelationId::fromString('9a040030-5a71-4a07-a469-4c005b47c686'),
+        )->withMultiple(['foo' => 'bar', 'bar' => [1, 2, 3]]); // @phpstan-ignore argument.type
+    }
 }
