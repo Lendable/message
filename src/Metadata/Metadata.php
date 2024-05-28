@@ -59,9 +59,13 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
      * @throws InvalidMessageName If the "Message-Name" key is invalid.
      * @throws InvalidUuidString If the "Message-Id" key is not a hex encoded UUID string.
      * @throws InvalidUuidString If the "Correlation-Id" key is not a hex encoded UUID string.
+     * @throws \InvalidArgumentException If an additional metadata key is not a string.
+     * @throws \InvalidArgumentException If an additional metadata key's value is not a scalar.
      */
     public static function fromArray(array $metadata): self
     {
+        self::validateMetadata($metadata);
+
         return new self(
             MessageName::fromString(self::extractValue($metadata, MetadataKey::MESSAGE_NAME)),
             MessageId::fromString(self::extractValue($metadata, MetadataKey::CAUSATION_ID)),
@@ -118,6 +122,8 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
      */
     public function withMultiple(array $pairs): self
     {
+        self::validateMetadata($pairs);
+
         return new self(
             $this->messageName,
             $this->causationId,
@@ -182,5 +188,34 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
             ],
             $this->additionalMetadata,
         );
+    }
+
+    /**
+     * @param array<mixed> $metadata
+     *
+     * @phpstan-assert array<string, scalar> $metadata
+     *
+     * @throws \InvalidArgumentException If a key is not a string.
+     * @throws \InvalidArgumentException If a value is not a scalar.
+     */
+    private static function validateMetadata(array $metadata): void
+    {
+        foreach ($metadata as $key => $value) {
+            if (!\is_string($key)) {
+                throw new \InvalidArgumentException(
+                    \sprintf('Invalid key "%s", must be a string.', \get_debug_type($key)),
+                );
+            }
+
+            if (!\is_scalar($value)) {
+                throw new \InvalidArgumentException(
+                    \sprintf(
+                        'Invalid value for key "%s", must be a scalar, got a "%s".',
+                        $key,
+                        \get_debug_type($value),
+                    )
+                );
+            }
+        }
     }
 }

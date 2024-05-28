@@ -6,9 +6,6 @@ namespace Lendable\Message\Metadata;
 
 final class MetadataSerializer
 {
-    /**
-     * @throws MetadataNotSerializable
-     */
     public function serialize(Metadata $metadata): string
     {
         try {
@@ -24,7 +21,7 @@ final class MetadataSerializer
                 \JSON_THROW_ON_ERROR,
             );
         } catch (\JsonException $exception) {
-            throw MetadataNotSerializable::dueTo($exception);
+            throw new \RuntimeException('Failed to serialize metadata.', previous: $exception);
         }
     }
 

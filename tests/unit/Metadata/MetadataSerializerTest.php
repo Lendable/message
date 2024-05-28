@@ -10,7 +10,6 @@ use Lendable\Message\MessageName;
 use Lendable\Message\Metadata\Metadata;
 use Lendable\Message\Metadata\MetadataKey;
 use Lendable\Message\Metadata\MetadataNotDeserializable;
-use Lendable\Message\Metadata\MetadataNotSerializable;
 use Lendable\Message\Metadata\MetadataSerializer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
@@ -100,20 +99,6 @@ final class MetadataSerializerTest extends TestCase
             (new MetadataSerializer())->deserialize('{"invalid: "json"}');
             self::fail('Exception not thrown.');
         } catch (MetadataNotDeserializable $exception) {
-            self::assertInstanceOf(\JsonException::class, $exception->getPrevious());
-        }
-    }
-
-    #[Test]
-    public function serializing_fails_if_contains_invalid_data(): void
-    {
-        $metadata = Metadata::base(MessageName::fromString('foo'), MessageId::generate(), CorrelationId::generate())
-            ->withMultiple(['foo' => \STDERR]); // @phpstan-ignore argument.type
-
-        try {
-            (new MetadataSerializer())->serialize($metadata);
-            self::fail('Exception not thrown.');
-        } catch (MetadataNotSerializable $exception) {
             self::assertInstanceOf(\JsonException::class, $exception->getPrevious());
         }
     }
