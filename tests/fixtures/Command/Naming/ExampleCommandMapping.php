@@ -10,6 +10,9 @@ use Tests\Fixtures\Lendable\Message\Command\ExampleFooCommand;
 
 final class ExampleCommandMapping
 {
+    /** @codeCoverageIgnore */
+    private function __construct() {}
+
     public const MAP = [
         ExampleFooCommand::class => 'example.command.foo',
         ExampleBarCommand::class => 'example.command.bar',
