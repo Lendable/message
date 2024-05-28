@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Lendable\PHPUnitExtensions\Rector\EnforceDisableReturnValueGenerationForTestDoublesRector;
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
+use Rector\CodeQuality\Rector\Catch_\ThrowWithPreviousExceptionRector;
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
@@ -25,4 +26,11 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->rule(EnforceDisableReturnValueGenerationForTestDoublesRector::class);
+
+    $rectorConfig->skip(
+        [
+            // Wants to propagate exception codes and does not appear to understand named parameters.
+            ThrowWithPreviousExceptionRector::class,
+        ]
+    );
 };
