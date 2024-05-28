@@ -6,6 +6,9 @@ namespace Lendable\Message\Metadata;
 
 final class MetadataSerializer
 {
+    /**
+     * @throws \RuntimeException If metadata cannot be serialized. A programmatic bug if this happens.
+     */
     public function serialize(Metadata $metadata): string
     {
         try {

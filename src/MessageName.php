@@ -7,27 +7,23 @@ namespace Lendable\Message;
 final readonly class MessageName
 {
     /**
-     * @var non-empty-string
+     * @param non-empty-string $name
      */
-    private string $name;
+    private function __construct(private string $name) {}
 
     /**
      * @throws InvalidMessageName If the message name is empty.
+     *
+     * @phpstan-assert non-empty-string $name
      */
-    private function __construct(string $name)
+    public static function fromString(string $name): self
     {
         if (\trim($name) === '') {
             throw InvalidMessageName::empty();
         }
-        /** @var non-empty-string $name */
-        $this->name = $name;
-    }
 
-    /**
-     * @throws InvalidMessageName If the message name is empty.
-     */
-    public static function fromString(string $name): self
-    {
+        /** @var non-empty-string $name */
+
         return new self($name);
     }
 

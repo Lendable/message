@@ -119,6 +119,9 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
      * Creates a new instance with multiple new additional metadata key/value pairs.
      *
      * @param array<string, scalar> $pairs
+     *
+     * @throws \InvalidArgumentException If a key is not a string.
+     * @throws \InvalidArgumentException If a value is not a scalar.
      */
     public function withMultiple(array $pairs): self
     {
@@ -203,7 +206,7 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
         foreach ($metadata as $key => $value) {
             if (!\is_string($key)) {
                 throw new \InvalidArgumentException(
-                    \sprintf('Invalid key "%s", must be a string.', \get_debug_type($key)),
+                    \sprintf('Invalid key "%s", must be a string.', $key),
                 );
             }
 
