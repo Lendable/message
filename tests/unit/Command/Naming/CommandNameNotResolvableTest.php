@@ -18,7 +18,7 @@ use Tests\Fixtures\Lendable\Message\Command\ExampleFooCommand;
 final class CommandNameNotResolvableTest extends TestCase
 {
     #[Test]
-    public function it_can_be_constructed_from_an_command(): void
+    public function it_can_be_constructed_from_a_command(): void
     {
         $command = ExampleFooCommand::fresh(CorrelationId::generate());
         $exception = CommandNameNotResolvable::for($command);
