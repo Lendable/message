@@ -98,6 +98,9 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
         return MetadataKey::tryFrom($key) instanceof MetadataKey || isset($this->additionalMetadata[$key]);
     }
 
+    /**
+     * Creates a new instance with a new additional metadata key/value pair.
+     */
     public function with(string $key, string|int|bool|float $value): self
     {
         return new self(
@@ -109,6 +112,8 @@ final readonly class Metadata implements \Countable, \IteratorAggregate
     }
 
     /**
+     * Creates a new instance with multiple new additional metadata key/value pairs.
+     *
      * @param array<string, scalar> $pairs
      */
     public function withMultiple(array $pairs): self
