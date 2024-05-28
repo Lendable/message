@@ -28,7 +28,7 @@ final class CommandNameNotResolvableTest extends TestCase
     }
 
     #[Test]
-    public function it_can_be_constructed_from_an_command_and_triggering_throwable(): void
+    public function it_can_be_constructed_from_a_command_and_triggering_throwable(): void
     {
         $command = ExampleFooCommand::fresh(CorrelationId::generate());
         $previous = new \RuntimeException();
