@@ -24,7 +24,7 @@ final class BinaryStringUuidConverterTest extends TestCase
         $converter = new BinaryStringUuidConverter();
         $id = $converter->convert($binaryString, MessageId::class);
 
-        self::assertInstanceOf(MessageId::class, $id); // @phpstan-ignore-line we want to not trust phpdoc generics here.
+        self::assertInstanceOf(MessageId::class, $id);
         self::assertSame('70d99e3b-af6e-4174-8982-e32890cffb02', $id->toString());
     }
 }

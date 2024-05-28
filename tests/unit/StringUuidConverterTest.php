@@ -21,7 +21,7 @@ final class StringUuidConverterTest extends TestCase
         $converter = new StringUuidConverter();
         $id = $converter->convert('ddb802d4-3bfb-44c0-a257-eb6178791259', MessageId::class);
 
-        self::assertInstanceOf(MessageId::class, $id); // @phpstan-ignore-line we want to not trust phpdoc generics here.
+        self::assertInstanceOf(MessageId::class, $id);
         self::assertSame('ddb802d4-3bfb-44c0-a257-eb6178791259', $id->toString());
     }
 }
