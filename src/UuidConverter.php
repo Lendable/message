@@ -14,6 +14,8 @@ interface UuidConverter
      * @return T
      *
      * @throws InvalidUuidString
+     *
+     * @phpstan-assert non-empty-string $value
      */
     public function convert(string $value, string $target): Uuid;
 }
