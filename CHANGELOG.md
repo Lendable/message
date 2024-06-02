@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/Lendable/message/compare/1.0.4...2.0.0) (2024-06-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* concrete exception type for `MetadataSerializer` deserialization failure ([#63](https://github.com/Lendable/message/issues/63))
+
+### Features
+
+* Concrete exception type for `MetadataSerializer` deserialization failure ([#63](https://github.com/Lendable/message/issues/63)) ([dfca5cd](https://github.com/Lendable/message/commit/dfca5cd072d874f99c7d229ac9979c9a313712a6))
+
 ## [1.0.4](https://github.com/Lendable/message/compare/1.0.3...1.0.4) (2024-06-02)
 
 
