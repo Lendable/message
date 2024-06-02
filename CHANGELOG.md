@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.4](https://github.com/Lendable/message/compare/1.0.3...1.0.4) (2024-06-02)
+
+
+### Fixes
+
+* Add `phpstan-assert` for `non-empty-string` to `MessageId` factories for call site inference ([#90](https://github.com/Lendable/message/issues/90)) ([e433b36](https://github.com/Lendable/message/commit/e433b36926e5ad6b5e0acfabe6e446f278faa92e))
+* Add `phpstan-assert` for `non-empty-string` to `UuidConverter` for call site inference ([#91](https://github.com/Lendable/message/issues/91)) ([664ab9c](https://github.com/Lendable/message/commit/664ab9c55fcf7f1ced24d2c3afcc654fd8858e64))
+
 ## [1.0.3](https://github.com/Lendable/message/compare/1.0.2...1.0.3) (2024-05-28)
 
 
