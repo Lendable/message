@@ -38,3 +38,10 @@ parameters:
 
   checkMissingIterableValueType: true
   treatPhpDocTypesAsCertain: false
+  exceptions:
+    check:
+      missingCheckedExceptionInThrows: true
+
+  ignoreErrors:
+    - message: '#.+throws checked exception.+#'
+      path: 'tests/*'
