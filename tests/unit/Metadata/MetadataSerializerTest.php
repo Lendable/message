@@ -9,6 +9,7 @@ use Lendable\Message\MessageId;
 use Lendable\Message\MessageName;
 use Lendable\Message\Metadata\Metadata;
 use Lendable\Message\Metadata\MetadataKey;
+use Lendable\Message\Metadata\MetadataNotDeserializable;
 use Lendable\Message\Metadata\MetadataSerializer;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
@@ -89,5 +90,16 @@ final class MetadataSerializerTest extends TestCase
         self::assertEquals(CorrelationId::fromString('9a040030-5a71-4a07-a469-4c005b47c686'), $deserializedMetadata->correlationId);
 
         self::assertSame('bar', $deserializedMetadata->get('foo'));
+    }
+
+    #[Test]
+    public function deserializing_throws_if_contains_invalid_data(): void
+    {
+        try {
+            (new MetadataSerializer())->deserialize('{"invalid: "json"}');
+            self::fail('Exception not thrown.');
+        } catch (MetadataNotDeserializable $exception) {
+            self::assertInstanceOf(\JsonException::class, $exception->getPrevious());
+        }
     }
 }

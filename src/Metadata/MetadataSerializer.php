@@ -29,13 +29,17 @@ final class MetadataSerializer
     }
 
     /**
-     * @throws \JsonException
+     * @throws MetadataNotDeserializable
      */
     public function deserialize(string $serializedMetadata): Metadata
     {
-        /** @var array<string, scalar> $metadata */
-        $metadata = \json_decode($serializedMetadata, true, flags: \JSON_THROW_ON_ERROR);
+        try {
+            /** @var array<string, scalar> $metadata */
+            $metadata = \json_decode($serializedMetadata, true, flags: \JSON_THROW_ON_ERROR);
 
-        return Metadata::fromArray($metadata);
+            return Metadata::fromArray($metadata);
+        } catch (\Exception $exception) {
+            throw MetadataNotDeserializable::dueTo($exception);
+        }
     }
 }
