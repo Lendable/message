@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/Lendable/message/compare/2.0.0...2.0.1) (2024-06-12)
+
+
+### Fixes
+
+* Document `QueryNameResolver` throws `QueryNameNotResolvable` ([#102](https://github.com/Lendable/message/issues/102)) ([76c5067](https://github.com/Lendable/message/commit/76c50677dad8cadcd5638257461afd05d3de49e9))
+
 ## [2.0.0](https://github.com/Lendable/message/compare/1.0.4...2.0.0) (2024-06-02)
 
 
