@@ -23,8 +23,10 @@ final class MetadataSerializer
                 \JSON_PRESERVE_ZERO_FRACTION |
                 \JSON_THROW_ON_ERROR,
             );
+            // @codeCoverageIgnoreStart
         } catch (\JsonException $exception) {
             throw new \RuntimeException('Failed to serialize metadata.', previous: $exception);
+            // @codeCoverageIgnoreEnd
         }
     }
 
