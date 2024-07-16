@@ -9,7 +9,7 @@ use Lendable\Message\CorrelationId;
 use Lendable\Message\MessageId;
 use Lendable\Message\MessageTrait;
 
-final class ExampleFooCommand implements Command
+final readonly class ExampleFooCommand implements Command
 {
     use MessageTrait;
 
