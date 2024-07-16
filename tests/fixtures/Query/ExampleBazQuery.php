@@ -9,7 +9,7 @@ use Lendable\Message\MessageId;
 use Lendable\Message\MessageTrait;
 use Lendable\Message\Query\Query;
 
-final class ExampleBazQuery implements Query
+final readonly class ExampleBazQuery implements Query
 {
     use MessageTrait;
 
