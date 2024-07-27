@@ -9,7 +9,7 @@ use Lendable\Message\Event\Event;
 use Lendable\Message\MessageId;
 use Lendable\Message\MessageTrait;
 
-final class ExampleBazEvent implements Event
+final readonly class ExampleBazEvent implements Event
 {
     use MessageTrait;
 
