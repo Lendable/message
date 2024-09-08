@@ -7,13 +7,15 @@ namespace Tests\Unit\Lendable\Message\Command\Naming;
 use Lendable\Message\Command\Naming\ClassMapCommandNameResolver;
 use Lendable\Message\Command\Naming\CommandNameNotResolvable;
 use Lendable\Message\InvalidMessageName;
-use Lendable\PHPUnitExtensions\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Command\ExampleBarCommand;
 use Tests\Fixtures\Lendable\Message\Command\ExampleFooCommand;
 
 #[CoversClass(ClassMapCommandNameResolver::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class ClassMapCommandNameResolverTest extends TestCase
 {
     #[Test]

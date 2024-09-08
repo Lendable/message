@@ -7,13 +7,15 @@ namespace Tests\Unit\Lendable\Message\Event\Naming;
 use Lendable\Message\Event\Naming\ClassMapEventNameResolver;
 use Lendable\Message\Event\Naming\EventNameNotResolvable;
 use Lendable\Message\InvalidMessageName;
-use Lendable\PHPUnitExtensions\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Event\ExampleBarEvent;
 use Tests\Fixtures\Lendable\Message\Event\ExampleFooEvent;
 
 #[CoversClass(ClassMapEventNameResolver::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class ClassMapEventNameResolverTest extends TestCase
 {
     #[Test]

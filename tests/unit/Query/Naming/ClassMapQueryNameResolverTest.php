@@ -7,13 +7,15 @@ namespace Tests\Unit\Lendable\Message\Query\Naming;
 use Lendable\Message\InvalidMessageName;
 use Lendable\Message\Query\Naming\ClassMapQueryNameResolver;
 use Lendable\Message\Query\Naming\QueryNameNotResolvable;
-use Lendable\PHPUnitExtensions\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DisableReturnValueGenerationForTestDoubles;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 use Tests\Fixtures\Lendable\Message\Query\ExampleBarQuery;
 use Tests\Fixtures\Lendable\Message\Query\ExampleFooQuery;
 
 #[CoversClass(ClassMapQueryNameResolver::class)]
+#[DisableReturnValueGenerationForTestDoubles]
 final class ClassMapQueryNameResolverTest extends TestCase
 {
     #[Test]
