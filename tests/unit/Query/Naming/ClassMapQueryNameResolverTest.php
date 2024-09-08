@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Lendable\Message\Query\Naming;
 
+use Lendable\Message\InvalidMessageName;
 use Lendable\Message\Query\Naming\ClassMapQueryNameResolver;
 use Lendable\Message\Query\Naming\QueryNameNotResolvable;
 use Lendable\PHPUnitExtensions\TestCase;
@@ -32,5 +33,20 @@ final class ClassMapQueryNameResolverTest extends TestCase
         $this->expectExceptionObject(QueryNameNotResolvable::for($query));
 
         $resolver->resolve($query);
+    }
+
+    #[Test]
+    public function rethrows_invalid_name_as_resolving_failure(): void
+    {
+        $resolver = new ClassMapQueryNameResolver([ExampleBarQuery::class => ' ']);
+        $error = null;
+
+        try {
+            $resolver->resolve(ExampleBarQuery::fresh());
+        } catch (QueryNameNotResolvable $error) {
+        }
+
+        self::assertNotNull($error);
+        self::assertInstanceOf(InvalidMessageName::class, $error->getPrevious());
     }
 }

@@ -6,6 +6,7 @@ namespace Tests\Unit\Lendable\Message\Command\Naming;
 
 use Lendable\Message\Command\Naming\ClassMapCommandNameResolver;
 use Lendable\Message\Command\Naming\CommandNameNotResolvable;
+use Lendable\Message\InvalidMessageName;
 use Lendable\PHPUnitExtensions\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -32,5 +33,20 @@ final class ClassMapCommandNameResolverTest extends TestCase
         $this->expectExceptionObject(CommandNameNotResolvable::for($command));
 
         $resolver->resolve($command);
+    }
+
+    #[Test]
+    public function rethrows_invalid_name_as_resolving_failure(): void
+    {
+        $resolver = new ClassMapCommandNameResolver([ExampleBarCommand::class => ' ']);
+        $error = null;
+
+        try {
+            $resolver->resolve(ExampleBarCommand::fresh());
+        } catch (CommandNameNotResolvable $error) {
+        }
+
+        self::assertNotNull($error);
+        self::assertInstanceOf(InvalidMessageName::class, $error->getPrevious());
     }
 }

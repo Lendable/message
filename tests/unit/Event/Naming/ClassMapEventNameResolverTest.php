@@ -6,6 +6,7 @@ namespace Tests\Unit\Lendable\Message\Event\Naming;
 
 use Lendable\Message\Event\Naming\ClassMapEventNameResolver;
 use Lendable\Message\Event\Naming\EventNameNotResolvable;
+use Lendable\Message\InvalidMessageName;
 use Lendable\PHPUnitExtensions\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -32,5 +33,20 @@ final class ClassMapEventNameResolverTest extends TestCase
         $this->expectExceptionObject(EventNameNotResolvable::for($event));
 
         $resolver->resolve($event);
+    }
+
+    #[Test]
+    public function rethrows_invalid_name_as_resolving_failure(): void
+    {
+        $resolver = new ClassMapEventNameResolver([ExampleBarEvent::class => ' ']);
+        $error = null;
+
+        try {
+            $resolver->resolve(ExampleBarEvent::fresh());
+        } catch (EventNameNotResolvable $error) {
+        }
+
+        self::assertNotNull($error);
+        self::assertInstanceOf(InvalidMessageName::class, $error->getPrevious());
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lendable\Message\Command\Naming;
 
 use Lendable\Message\Command\Command;
+use Lendable\Message\InvalidMessageName;
 use Lendable\Message\MessageName;
 
 final readonly class ClassMapCommandNameResolver implements CommandNameResolver
@@ -16,6 +17,10 @@ final readonly class ClassMapCommandNameResolver implements CommandNameResolver
 
     public function resolve(Command $command): MessageName
     {
-        return MessageName::fromString($this->map[$command::class] ?? throw CommandNameNotResolvable::for($command));
+        try {
+            return MessageName::fromString($this->map[$command::class] ?? throw CommandNameNotResolvable::for($command));
+        } catch (InvalidMessageName $e) {
+            throw CommandNameNotResolvable::for($command, $e);
+        }
     }
 }
