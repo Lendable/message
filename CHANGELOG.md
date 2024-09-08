@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/Lendable/message/compare/2.0.1...2.1.0) (2024-09-08)
+
+
+### Features
+
+* Add class-map based message name resolvers ([#139](https://github.com/Lendable/message/issues/139)) ([01fac65](https://github.com/Lendable/message/commit/01fac65207d25473922fc519e7ae5f1f2b494076))
+
+
+### Fixes
+
+* Export-ignore `.allowed-licenses.php` ([#140](https://github.com/Lendable/message/issues/140)) ([763c157](https://github.com/Lendable/message/commit/763c1571523229c63a79aea8a51a2a516b277dbc))
+
 ## [2.0.1](https://github.com/Lendable/message/compare/2.0.0...2.0.1) (2024-06-12)
 
 
