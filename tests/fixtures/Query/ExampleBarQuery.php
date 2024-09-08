@@ -20,11 +20,11 @@ final readonly class ExampleBarQuery implements Query
         $this->causationId = $causationId;
     }
 
-    public static function fresh(CorrelationId $correlationId, ?MessageId $causationId = null): self
+    public static function fresh(?CorrelationId $correlationId = null, ?MessageId $causationId = null): self
     {
         $messageId = MessageId::generate();
 
-        return new self($messageId, $correlationId, $causationId ?? $messageId);
+        return new self($messageId, $correlationId ?? CorrelationId::generate(), $causationId ?? $messageId);
     }
 
     public static function existing(MessageId $id, CorrelationId $correlationId, MessageId $causationId): self
