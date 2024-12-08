@@ -62,7 +62,7 @@ jobs:
         run: "su-exec 1000 composer config platform.php ${{ matrix.php-version }}"
 
       - name: "Install composer dependencies"
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
 
