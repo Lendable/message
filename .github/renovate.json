@@ -1,7 +1,7 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-      "local>Lendable/renovate-config-public",
+      "local>Lendable/renovate-config-public-public",
       ":semanticCommits"
     ]
 }
