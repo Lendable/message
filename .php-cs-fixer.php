@@ -8,7 +8,7 @@ $finder = PhpCsFixer\Finder::create()
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PER-CS2.0' => true,
+        '@PER-CS2x0' => true,
         '@PER-CS2.0:risky' => true,
         '@PHP82Migration' => true,
         '@DoctrineAnnotation' => true,
