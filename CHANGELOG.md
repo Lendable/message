@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/Lendable/message/compare/2.1.0...2.2.0) (2025-12-30)
+
+
+### Features
+
+* **php:** Bump minumum php version to 8.3 ([#208](https://github.com/Lendable/message/issues/208)) ([8eecb28](https://github.com/Lendable/message/commit/8eecb28abdf533e1fd1c5579740b4a5431c25bdc))
+
 ## [2.1.0](https://github.com/Lendable/message/compare/2.0.1...2.1.0) (2024-09-08)
 
 
