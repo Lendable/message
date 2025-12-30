@@ -302,7 +302,9 @@ final class MetadataTest extends TestCase
      */
     public static function mandatoryMetadataKeys(): iterable
     {
-        yield MetadataKey::cases();
+        foreach (MetadataKey::cases() as $case) {
+            yield [$case];
+        }
     }
 
     #[Test]
