@@ -25,11 +25,14 @@ jobs:
         php-version:
           - "8.3"
           - "8.4"
+          - "8.5"
         include:
           - php-version: "8.3"
             php-image: "public.ecr.aws/docker/library/php:8.3-cli-alpine"
           - php-version: "8.4"
             php-image: "public.ecr.aws/docker/library/php:8.4-cli-alpine"
+          - php-version: "8.5"
+            php-image: "public.ecr.aws/docker/library/php:8.5-cli-alpine"
 
     steps:
       - name: "Install OS dependencies"
