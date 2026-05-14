@@ -36,7 +36,6 @@ parameters:
   level: max
   tmpDir: tmp/phpstan
 
-  checkMissingIterableValueType: true
   treatPhpDocTypesAsCertain: false
   exceptions:
     check:
