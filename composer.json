@@ -14,17 +14,17 @@
         "ramsey/uuid": "^4.7"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.51.0",
-        "ergebnis/phpstan-rules": "^2.12.0",
-        "lendable/composer-license-checker": "^1.2.1",
+        "ergebnis/composer-normalize": "^2.52.0",
+        "ergebnis/phpstan-rules": "^2.13.1",
+        "lendable/composer-license-checker": "^1.4.0",
         "lendable/phpunit-extensions": "^0.5",
-        "php-cs-fixer/shim": "^3.95.1",
-        "phpstan/phpstan": "^2.1.51",
+        "php-cs-fixer/shim": "^3.95.15",
+        "phpstan/phpstan": "^2.2.5",
         "phpstan/phpstan-deprecation-rules": "^2.0.4",
-        "phpstan/phpstan-phpunit": "^2.0.16",
-        "phpstan/phpstan-strict-rules": "^2.0.10",
+        "phpstan/phpstan-phpunit": "^2.0.18",
+        "phpstan/phpstan-strict-rules": "^2.0.11",
         "phpunit/phpunit": "^13.2.4",
-        "rector/rector": "^2.4.2"
+        "rector/rector": "^2.5.7"
     },
     "minimum-stability": "stable",
     "autoload": {
