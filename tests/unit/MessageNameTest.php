@@ -39,7 +39,7 @@ final class MessageNameTest extends TestCase
     public function it_throws_when_constructing_from_string_if_the_string_is_empty(string $emptyString): void
     {
         $this->expectException(InvalidMessageName::class);
-        $this->expectExceptionMessage('Message name cannot be empty.');
+        $this->expectExceptionMessageIs('Message name cannot be empty.');
 
         MessageName::fromString($emptyString);
     }

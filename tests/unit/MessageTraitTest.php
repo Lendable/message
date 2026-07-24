@@ -36,13 +36,13 @@ final class MessageTraitTest extends TestCase
         MessageId $causationId,
         CorrelationId $correlationId
     ): Message {
-        return new class ($id, $causationId, $correlationId) implements Message {
+        return new readonly class ($id, $causationId, $correlationId) implements Message {
             use MessageTrait;
 
             public function __construct(
-                private readonly MessageId $id,
-                private readonly MessageId $causationId,
-                private readonly CorrelationId $correlationId
+                private MessageId $id,
+                private MessageId $causationId,
+                private CorrelationId $correlationId
             ) {}
         };
     }

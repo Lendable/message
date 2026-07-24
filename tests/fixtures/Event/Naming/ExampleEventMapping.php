@@ -13,7 +13,7 @@ final class ExampleEventMapping
     /** @codeCoverageIgnore  */
     private function __construct() {}
 
-    public const MAP = [
+    public const array MAP = [
         ExampleFooEvent::class => 'example.event.foo',
         ExampleBarEvent::class => 'example.event.bar',
         ExampleBazEvent::class => 'example.event.baz',

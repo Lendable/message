@@ -13,7 +13,7 @@ final class ExampleCommandMapping
     /** @codeCoverageIgnore */
     private function __construct() {}
 
-    public const MAP = [
+    public const array MAP = [
         ExampleFooCommand::class => 'example.command.foo',
         ExampleBarCommand::class => 'example.command.bar',
         ExampleBazCommand::class => 'example.command.baz',
