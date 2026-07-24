@@ -33,7 +33,7 @@ final class MetadataSerializerTest extends TestCase
 
         self::assertSame(
             '{"Message-Name":"foo","Causation-Id":"ccc32a5b-3fb9-40a8-b366-5d863f536035","Correlation-Id":"9a040030-5a71-4a07-a469-4c005b47c686"}',
-            (new MetadataSerializer())->serialize($metadata),
+            new MetadataSerializer()->serialize($metadata),
         );
     }
 
@@ -96,7 +96,7 @@ final class MetadataSerializerTest extends TestCase
     public function deserializing_throws_if_contains_invalid_data(): void
     {
         try {
-            (new MetadataSerializer())->deserialize('{"invalid: "json"}');
+            new MetadataSerializer()->deserialize('{"invalid: "json"}');
             self::fail('Exception not thrown.');
         } catch (MetadataNotDeserializable $exception) {
             self::assertInstanceOf(\JsonException::class, $exception->getPrevious());

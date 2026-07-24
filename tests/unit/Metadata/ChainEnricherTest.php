@@ -34,7 +34,7 @@ final class ChainEnricherTest extends TestCase
         $first = $this->createEnricher($calls, 'Foo', 'Bar');
         $second = $this->createEnricher($calls, 'Bar', 'Foo');
 
-        $metadata = (new ChainEnricher($first, $second))
+        $metadata = new ChainEnricher($first, $second)
             ->enrich(
                 $event,
                 Metadata::base(
@@ -64,13 +64,13 @@ final class ChainEnricherTest extends TestCase
     {
         $delegate = new StaticMetadataEnricher([$key => $value]);
 
-        return new class ($calls, $delegate) implements MetadataEnricher {
+        return new readonly class ($calls, $delegate) implements MetadataEnricher {
             /**
              * @param \ArrayObject<int, MetadataEnricher> $calls
              */
             public function __construct(
-                private readonly \ArrayObject $calls,
-                private readonly MetadataEnricher $delegate,
+                private \ArrayObject $calls,
+                private MetadataEnricher $delegate,
             ) {}
 
             public function enrich(Message $message, Metadata $metadata): Metadata
