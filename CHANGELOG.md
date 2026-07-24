@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/Lendable/message/compare/2.2.0...2.3.0) (2026-07-24)
+
+
+### Features
+
+* Require PHP 8.4 ([#234](https://github.com/Lendable/message/issues/234)) ([a489016](https://github.com/Lendable/message/commit/a48901621d8954303a7ea5896b71536001610376))
+
 ## [2.2.0](https://github.com/Lendable/message/compare/2.1.0...2.2.0) (2026-06-11)
 
 
