@@ -1,0 +1,22 @@
+composer.json
+  h_2bcd98c360af81 13,46
+rector.php
+  h_2bcd98c360af81 11-22
+.php-cs-fixer.php
+  h_2bcd98c360af81 13
+.github/workflows/ci.yaml
+  h_2bcd98c360af81 61,76
+tests/unit/MessageNameTest.php
+  h_2bcd98c360af81 42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "94c5c5a6417365e3f269a2ed3894ff8b029b8bd1",
+  "prompts": {},
+  "humans": {
+    "h_2bcd98c360af81": {
+      "author": "Marcin Michalski <evulmastah@gmail.com>"
+    }
+  }
+}
