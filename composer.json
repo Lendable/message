@@ -18,13 +18,13 @@
         "ergebnis/phpstan-rules": "^2.13.1",
         "lendable/composer-license-checker": "^1.4.0",
         "lendable/phpunit-extensions": "^0.5",
-        "php-cs-fixer/shim": "^3.95.17",
-        "phpstan/phpstan": "^2.2.6",
+        "php-cs-fixer/shim": "^3.95.21",
+        "phpstan/phpstan": "^2.2.9",
         "phpstan/phpstan-deprecation-rules": "^2.0.5",
         "phpstan/phpstan-phpunit": "^2.0.18",
         "phpstan/phpstan-strict-rules": "^2.0.12",
-        "phpunit/phpunit": "^13.2.5",
-        "rector/rector": "^2.5.8"
+        "phpunit/phpunit": "^13.3.1",
+        "rector/rector": "^2.6.3"
     },
     "minimum-stability": "stable",
     "autoload": {
