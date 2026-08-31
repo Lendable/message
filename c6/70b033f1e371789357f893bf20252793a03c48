@@ -1,0 +1,32 @@
+.gitattributes
+  h_2bcd98c360af81 1-15
+.gitignore
+  h_2bcd98c360af81 2
+Makefile
+  h_2bcd98c360af81 1-47
+README.md
+  h_2bcd98c360af81 4-28
+SECURITY.md
+  h_2bcd98c360af81 29
+local/.env.dist
+  h_2bcd98c360af81 1-2
+local/Dockerfile
+  h_2bcd98c360af81 1-38
+local/docker-compose.yaml
+  h_2bcd98c360af81 1-15
+local/php_conf.ini
+  h_2bcd98c360af81 1-8
+local/xdebug-entrypoint.sh
+  h_2bcd98c360af81 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "c670b033f1e371789357f893bf20252793a03c48",
+  "prompts": {},
+  "humans": {
+    "h_2bcd98c360af81": {
+      "author": "Marcin Michalski <evulmastah@gmail.com>"
+    }
+  }
+}
