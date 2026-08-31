@@ -26,7 +26,7 @@ We review security reports promptly and will respond directly to you.
 
 ## Public Disclosure
 
-Please do not publicly discuss any potential seucrity vulnerabilties. By
+Please do not publicly discuss any potential security vulnerabilities. By
 disclosing to us privately, we can help limit any impact to other users.
 
 ---
