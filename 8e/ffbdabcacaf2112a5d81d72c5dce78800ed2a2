@@ -1,0 +1,23 @@
+.github/workflows/ci.yaml
+  s_4c20b81caba2f9::t_e835dda1daa88a 28,34-35,41-46,77
+composer.json
+  s_4c20b81caba2f9::t_e835dda1daa88a 19
+composer.lock
+  s_4c20b81caba2f9::t_b82490128b9fdc 7,868,872,876-877,882,887-895,920,922
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "8effbdabcacaf2112a5d81d72c5dce78800ed2a2",
+  "prompts": {},
+  "sessions": {
+    "s_4c20b81caba2f9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07aa9-90a6-7940-a71c-b98e6fa6a6e5",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "Marcin Michalski <evulmastah@gmail.com>"
+    }
+  }
+}
