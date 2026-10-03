@@ -14,16 +14,16 @@
         "ramsey/uuid": "^4.7"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.53.0",
-        "ergebnis/phpstan-rules": "^2.13.1",
+        "ergebnis/composer-normalize": "^2.54.0",
+        "ergebnis/phpstan-rules": "^2.14.0",
         "lendable/composer-license-checker": "^1.4.1",
         "lendable/phpunit-extensions": "^0.5",
-        "php-cs-fixer/shim": "^3.95.25",
-        "phpstan/phpstan": "^2.2.14",
+        "php-cs-fixer/shim": "^3.95.27",
+        "phpstan/phpstan": "^2.2.16",
         "phpstan/phpstan-deprecation-rules": "^2.0.5",
-        "phpstan/phpstan-phpunit": "^2.0.18",
+        "phpstan/phpstan-phpunit": "^2.0.19",
         "phpstan/phpstan-strict-rules": "^2.0.12",
-        "phpunit/phpunit": "^13.3.3",
+        "phpunit/phpunit": "^13.3.5",
         "rector/rector": "^2.6.7"
     },
     "minimum-stability": "stable",
