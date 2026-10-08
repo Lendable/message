@@ -21,9 +21,9 @@
         "php-cs-fixer/shim": "^3.95.27",
         "phpstan/phpstan": "^2.2.16",
         "phpstan/phpstan-deprecation-rules": "^2.0.5",
-        "phpstan/phpstan-phpunit": "^2.0.19",
+        "phpstan/phpstan-phpunit": "^2.0.21",
         "phpstan/phpstan-strict-rules": "^2.0.12",
-        "phpunit/phpunit": "^13.3.5",
+        "phpunit/phpunit": "^13.3.6",
         "rector/rector": "^2.6.7"
     },
     "minimum-stability": "stable",
