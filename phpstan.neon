@@ -18,6 +18,7 @@ services:
     arguments:
       allowAbstractClasses: true
       classesNotRequiredToBeAbstractOrFinal: []
+      ignoreDoctrineEntities: false
     tags:
       - phpstan.rules.rule
   -
