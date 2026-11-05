@@ -45,7 +45,7 @@ jobs:
           docker-php-ext-install mbstring
 
       - name: "Install composer"
-        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.10.3
+        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.11.0
 
       - name: "Checkout"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
