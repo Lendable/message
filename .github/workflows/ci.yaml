@@ -32,13 +32,13 @@ jobs:
           - php-version: "8.5"
             php-image: "public.ecr.aws/docker/library/php:8.5-cli-alpine"
           - php-version: "8.6"
-            php-image: "public.ecr.aws/docker/library/php:8.6-rc-cli-alpine"
+            php-image: "public.ecr.aws/docker/library/php:8.6-cli-alpine"
 
     steps:
       - name: "Install OS dependencies"
         run: apk add --no-cache bash git su-exec
 
-      - name: "Install mbstring"
+      - name: "Install mbstring (not in the PHP 8.6 image)"
         if: ${{ matrix.php-version == '8.6' }}
         run: |
           apk add --no-cache oniguruma-dev
@@ -74,7 +74,6 @@ jobs:
         uses: "ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda" # 4.0.0
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "${{ matrix.php-version == '8.6' && '--ignore-platform-req=php+' || '' }}"
 
       - name: "Validate Composer dependencies"
         run: "su-exec 1000 composer validate"
