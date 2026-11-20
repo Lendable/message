@@ -1,0 +1,19 @@
+.github/workflows/ci.yaml
+  s_b37ea079e17db0::t_59f7ffed9ed86f 35,41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "33b86bc50b9a30980c1ef867d26ca428671a8a45",
+  "prompts": {},
+  "sessions": {
+    "s_b37ea079e17db0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "860c526a-29a4-4889-87c7-75c590f8ea2b",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marcin Michalski <evulmastah@gmail.com>"
+    }
+  }
+}
