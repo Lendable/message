@@ -1,0 +1,80 @@
+name: "Composer cache"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "composer-cache-${{ github.ref }}"
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/composer-cache.yaml"
+      - "composer.json"
+      - "composer.lock"
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+env:
+  COMPOSER_MAX_PARALLEL_HTTP: "4"
+
+jobs:
+  warm:
+    name: "Warm (PHP ${{ matrix.php-version }} with ${{ matrix.dependencies }} deps)"
+    runs-on: "ubuntu-26.04"
+    container:
+      image: "${{ matrix.php-image }}"
+
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        dependencies:
+          - "lowest"
+          - "locked"
+          - "highest"
+        php-version:
+          - "8.4"
+          - "8.5"
+          - "8.6"
+        include:
+          - php-version: "8.4"
+            php-image: "public.ecr.aws/docker/library/php:8.4-cli-alpine"
+          - php-version: "8.5"
+            php-image: "public.ecr.aws/docker/library/php:8.5-cli-alpine"
+          - php-version: "8.6"
+            php-image: "public.ecr.aws/docker/library/php:8.6-cli-alpine"
+
+    steps:
+      - name: "Install OS dependencies"
+        run: apk add --no-cache bash git su-exec
+
+      - name: "Install mbstring"
+        if: ${{ matrix.php-version == '8.6' }}
+        run: |
+          apk add --no-cache oniguruma-dev
+          docker-php-ext-install mbstring
+
+      - name: "Install composer"
+        run: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=2.11.1
+
+      - name: "Checkout"
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          show-progress: false
+
+      - name: "Ensure application writable for non-root user"
+        run: "chown -R 1000:1000 ."
+
+      - name: "Update composer platform version"
+        if: ${{ matrix.dependencies != 'locked' && matrix.php-version != '8.4' }}
+        run: "su-exec 1000 composer config platform.php ${{ matrix.php-version }}"
+
+      - name: "Warm Composer cache"
+        uses: "ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda" # 4.0.0
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
