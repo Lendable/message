@@ -47,7 +47,7 @@ jobs:
           - php-version: "8.5"
             php-image: "public.ecr.aws/docker/library/php:8.5-cli-alpine"
           - php-version: "8.6"
-            php-image: "public.ecr.aws/docker/library/php:8.6-rc-cli-alpine"
+            php-image: "public.ecr.aws/docker/library/php:8.6-cli-alpine"
 
     steps:
       - name: "Install OS dependencies"
@@ -78,4 +78,3 @@ jobs:
         uses: "ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda" # 4.0.0
         with:
           dependency-versions: "${{ matrix.dependencies }}"
-          composer-options: "${{ matrix.php-version == '8.6' && '--ignore-platform-req=php+' || '' }}"
