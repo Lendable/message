@@ -1,0 +1,19 @@
+phpstan.neon
+  s_7824a1a8c313d3::t_2fe08f9a92fc68 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "5cdd9e5347a7d087a920a5cb861d6ea0e81ddbec",
+  "prompts": {},
+  "sessions": {
+    "s_7824a1a8c313d3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "25a3e50f-cdd1-4bd8-bcb5-b56e7a012ba1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marcin Michalski <evulmastah@gmail.com>"
+    }
+  }
+}

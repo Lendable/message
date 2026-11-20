@@ -1,0 +1,21 @@
+composer.json
+  s_5a15e58072b43b::t_aa1137b5d43370 22,27
+composer.lock
+  s_5a15e58072b43b::t_b64cba22af8326 7,1404,1407-1408,1464,2157,2161,2165-2166,2171,2202,2210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ec803e412a8adee9c26fc41386b9016656b137fa",
+  "prompts": {},
+  "sessions": {
+    "s_5a15e58072b43b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b1c944b-0edd-4ecd-bd0a-bfb27beb6bf4",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Marcin Michalski <evulmastah@gmail.com>"
+    }
+  }
+}
