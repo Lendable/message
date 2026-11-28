@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/php:8.4-cli-alpine@sha256:b9014f1cc1983827459faed83b315a40ead9860bdadefc042b31f1540ef8c746 AS base
+FROM public.ecr.aws/docker/library/php:8.4-cli-alpine@sha256:d64c04fbee7a93c48226fe40380b5e121856d90739dadb7c74574f9995338700 AS base
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
@@ -13,7 +13,7 @@ RUN addgroup --gid "${GROUP_ID}" "app" && \
     -s "/bin/sh" \
     "app"
 
-COPY --from=composer/composer:2.11.1-bin@sha256:56a1b0a72bacd78079e3fa49a49e7bf58326365753415c99385ea2b08bded0a5 /composer /usr/bin/composer
+COPY --from=composer/composer:2.11.2-bin@sha256:4eaf89f62eb9504807f2828f1829a71b7fcd202e89abe2f41c1fb2136068fbfb /composer /usr/bin/composer
 
 RUN apk add --no-cache git
 
