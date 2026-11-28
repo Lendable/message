@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lendable\Message;
 
 use Ramsey\Uuid\Exception\InvalidArgumentException;
-use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface as RamseyUuidInterface;
 
@@ -17,7 +16,7 @@ final readonly class MessageId implements Uuid
     {
         try {
             return new self(RamseyUuid::fromString($value));
-        } catch (InvalidUuidStringException $exception) {
+        } catch (InvalidArgumentException $exception) {
             throw InvalidUuidString::hexString($value, $exception);
         }
     }

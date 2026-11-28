@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lendable\Message;
 
 use Ramsey\Uuid\Exception\InvalidArgumentException;
-use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -29,7 +28,7 @@ final readonly class CorrelationId implements Uuid
     {
         try {
             return new self(RamseyUuid::fromString($id));
-        } catch (InvalidUuidStringException $exception) {
+        } catch (InvalidArgumentException $exception) {
             throw InvalidUuidString::hexString($id, $exception);
         }
     }
